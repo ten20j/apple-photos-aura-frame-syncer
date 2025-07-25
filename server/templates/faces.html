@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apple Photos Faces</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .container { max-width: 600px; margin: auto; }
+        ul { padding-left: 1.5em; }
+        li { margin-bottom: 0.5em; }
+        a { text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apple Photos: All Person Names</h1>
+        <ul>
+            {% for name in person_names %}
+            <li>{{ name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/">&larr; Back to Dashboard</a>
+    </div>
+</body>
+</html> 

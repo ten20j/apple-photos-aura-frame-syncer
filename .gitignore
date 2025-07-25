@@ -1,0 +1,38 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.conda/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Cache/temp files
+.cache/
+temp/
+tmp/
+
+# Potential photo caches or temporary download directories
+downloads/
+photo_cache/ 

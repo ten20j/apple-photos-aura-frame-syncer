@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aura Frame Sync Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .container { max-width: 800px; margin: auto; }
+        button { padding: 0.5em 1.5em; font-size: 1.1em; }
+        .status { margin-top: 1em; color: #333; }
+        .albums { margin: 2em 0; }
+        .album-select { 
+            padding: 0.5em;
+            font-size: 1em;
+            margin-right: 1em;
+            min-width: 300px;
+        }
+        .sync-options {
+            margin: 2em 0;
+            padding: 1em;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        .sync-options h2 {
+            margin-top: 0;
+        }
+        .nav-links {
+            margin: 2em 0;
+        }
+        .nav-links a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 1em;
+        }
+        .photo-count {
+            color: #666;
+            font-size: 0.9em;
+        }
+        optgroup {
+            font-weight: bold;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aura Frame Sync Dashboard</h1>
+        
+        <div class="sync-options">
+            <h2>Sync Options</h2>
+            
+            <!-- Album Sync -->
+            <form method="post" action="/sync">
+                <select name="album_name" class="album-select" required>
+                    <option value="">Select an Album...</option>
+                    <optgroup label="Regular Albums">
+                        {% for album in albums %}
+                            {% if album.type == 'album' %}
+                            <option value="{{ album.title }}">{{ album.title }} ({{ album.photo_count }} photos)</option>
+                            {% endif %}
+                        {% endfor %}
+                    </optgroup>
+                    <optgroup label="Smart Albums">
+                        {% for album in albums %}
+                            {% if album.type == 'smart' %}
+                            <option value="{{ album.title }}">{{ album.title }} ({{ album.photo_count }} photos)</option>
+                            {% endif %}
+                        {% endfor %}
+                    </optgroup>
+                </select>
+                <button type="submit">Sync Album</button>
+            </form>
+
+            <hr style="margin: 1em 0;">
+
+            <!-- Test Sync with Random Photo -->
+            <form method="post" action="/sync">
+                <button type="submit">Test Sync (Random Photo)</button>
+            </form>
+        </div>
+
+        {% if sync_status %}
+        <div class="status">
+            <strong>Status:</strong> {{ sync_status }}
+        </div>
+        {% endif %}
+
+        <div class="nav-links">
+            <a href="/faces">View Face Names</a>
+        </div>
+    </div>
+</body>
+</html> 

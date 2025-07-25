@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Images for {{ person_name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .container { max-width: 800px; margin: auto; }
+        .thumbs { display: flex; flex-wrap: wrap; gap: 1em; }
+        .thumbs img { max-width: 180px; max-height: 180px; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
+        a { text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sample Images for <em>{{ person_name }}</em></h1>
+        {% if sample_urls %}
+        <div class="thumbs">
+            {% for url in sample_urls %}
+            <img src="{{ url }}" alt="Sample for {{ person_name }}">
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No images found for this person.</p>
+        {% endif %}
+        <p><a href="/faces">&larr; Back to Faces List</a></p>
+    </div>
+</body>
+</html> 
